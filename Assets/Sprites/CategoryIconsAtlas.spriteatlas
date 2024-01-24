@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CategoryIconsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 46b33d267ab45014ab04c05271b2b86f, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 02925b4054d44cc4898e1e7276ddcde0, type: 3}
+  - {fileID: 21300000, guid: e5c168d08d71b4845b2b208df496fd2b, type: 3}
+  - {fileID: 21300000, guid: 4e2a7a11cda0c2d4e8c97d617c9ba5a2, type: 3}
+  - {fileID: 21300000, guid: cc807d02d2ab8594dbb7ce691ca620e1, type: 3}
+  - {fileID: 21300000, guid: c1acb442d5087904e98f4826423a5df9, type: 3}
+  - {fileID: 21300000, guid: 0d2068e2083193e409addc146425d5c5, type: 3}
+  - {fileID: 21300000, guid: 646489338bafc9a4b969164100c9f7b0, type: 3}
+  - {fileID: 21300000, guid: 44638d631af392e45b66186efe14bdcb, type: 3}
+  - {fileID: 21300000, guid: 31402554b27508b45b8f05acb0281744, type: 3}
+  - {fileID: 21300000, guid: 13a606251334ff240a738156d57cfffc, type: 3}
+  - {fileID: 21300000, guid: 193d9eb5548417b4fab7ddeb3fa14bea, type: 3}
+  - {fileID: 21300000, guid: 71e880a667720cf4097612eb7b236610, type: 3}
+  - {fileID: 21300000, guid: 608ba917e968585479fdeee1b7c5cfe6, type: 3}
+  - {fileID: 21300000, guid: 089b2c186646e7b4ba7a1e324d2c71c2, type: 3}
+  - {fileID: 21300000, guid: fa8a727862ed0df4aa586e780e384bd4, type: 3}
+  - {fileID: 21300000, guid: a65b5df8b235989488465599546fdf2f, type: 3}
+  - {fileID: 21300000, guid: 8ccff52aad31e1e4295e2f4b8b68fc95, type: 3}
+  - {fileID: 21300000, guid: 30f572eac7ad12541b7b13b6080eda90, type: 3}
+  - {fileID: 21300000, guid: f663863bd250d974a9c643a2fdf2a1c2, type: 3}
+  - {fileID: 21300000, guid: a428ab6c960874242ba7b62601f776b9, type: 3}
+  - {fileID: 21300000, guid: 3e36b27db94d1744c965c89996157e63, type: 3}
+  - {fileID: 21300000, guid: 3ddbcbbd89dd62745b654bb579e1789a, type: 3}
+  - {fileID: 21300000, guid: 92361a2e8c517c14ab985a3fc63676f4, type: 3}
+  - {fileID: 21300000, guid: 68e4712fd7a84f24c9fffc0bc0d85ff3, type: 3}
+  - {fileID: 21300000, guid: fcde464ff81f9d54aa231cfb2af5b997, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Salary
+  - OtherIncome
+  - Entertainment
+  - Health
+  - Saving
+  - Home
+  - Restaurant
+  - Telephone
+  - Trip
+  - Snack
+  - Tax
+  - Sale
+  - GoingOut
+  - Utility
+  - Bank
+  - Food
+  - Purchase
+  - Grant
+  - Office
+  - OtherExpense
+  - Transport
+  - Refund
+  - Gift
+  - Car
+  - Insurance
+  m_RenderDataMap: {}
+  m_Tag: CategoryIconsAtlas
+  m_IsVariant: 0

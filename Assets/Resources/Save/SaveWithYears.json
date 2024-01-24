@@ -1,0 +1,57 @@
+{
+  "Items": [
+    {
+      "year": 2024,
+      "data": [
+        {
+          "id": 0,
+          "date": "17/01/2024",
+          "title": "Cinoche avec Patoche",
+          "amount": 18.0,
+          "transactionType": 4,
+          "entry": false
+        },
+        {
+          "id": 0,
+          "date": "17/01/2024",
+          "title": "Pneus",
+          "amount": 120.0,
+          "transactionType": 9,
+          "entry": false
+        },
+        {
+          "id": 0,
+          "date": "01/01/2024",
+          "title": "Gros salaire de Janvier",
+          "amount": 1002.0,
+          "transactionType": 20,
+          "entry": true
+        },
+        {
+          "id": 0,
+          "date": "03/01/2024",
+          "title": "Loyer Janvier",
+          "amount": 922.0,
+          "transactionType": 14,
+          "entry": false
+        },
+        {
+          "id": 0,
+          "date": "02/02/2024",
+          "title": "fg",
+          "amount": 15.0,
+          "transactionType": 9,
+          "entry": false
+        },
+        {
+          "id": 0,
+          "date": "20/01/2024",
+          "title": "Remboursement Zalando",
+          "amount": 58.78,
+          "transactionType": 23,
+          "entry": true
+        }
+      ]
+    }
+  ]
+}
