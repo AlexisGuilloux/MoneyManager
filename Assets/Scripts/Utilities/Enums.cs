@@ -58,6 +58,8 @@ public enum CalculatorOperatorType
 
 public enum SceneName
 {
-    DefaultScene = 0,
-    AddTransactionScene = 1
+    BootScene = 0,
+    MainScene = 1,
+    AddTransactionScene = 2,
+    TransactionOverviewScene = 3
 }

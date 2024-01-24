@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DefaultScene.unity
+    path: Assets/Scenes/Boot.unity
+    guid: dc7a0b387f115ca4c94e1e595fe83ba7
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/AddTransactionUIScreen.unity
     guid: 40e8d17acc2ce914e992bd515dc980b9
+  - enabled: 1
+    path: Assets/Scenes/TransactionOverviewScreen.unity
+    guid: 64310f59b64eb09488053f31f783aaeb
   m_configObjects: {}

@@ -88,7 +88,7 @@ public class TransactionAdderManager : MonoBehaviour
         */
 
         //Exit to default scene
-        GameManager.Instance.LoadSceneAsync(SceneName.DefaultScene);
+        GameManager.Instance.LoadSceneAsync(SceneName.MainScene);
     }
 
     #endregion
