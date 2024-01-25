@@ -13,6 +13,7 @@ public class TransactionOverviewUIManager : MonoBehaviour
     [SerializeField] private Button _deleteTransactionBtn;
     [SerializeField] private Button _exitBtn;
 
+    private TransactionData _transactionData;
 
     // Start is called before the first frame update
     void Start()
@@ -33,14 +34,14 @@ public class TransactionOverviewUIManager : MonoBehaviour
 
     private void Init()
     {
-        var data = GameManager.Instance.TransactionToDisplay;
+        _transactionData = GameManager.Instance.TransactionToDisplay;
 
-        _transactionTitle.text = data.title;
-        _transactionDate.text = data.date;
-        _transactionAmount.text = $"{data.amount} €";
-        _transactionCategoryImage.sprite = Utilities.Converter.GetTransactionCategoryDataFromTransactionType(data.transactionType).sprite;
+        _transactionTitle.text = _transactionData.title;
+        _transactionDate.text = _transactionData.date;
+        _transactionAmount.text = $"{_transactionData.amount} €";
+        _transactionCategoryImage.sprite = Utilities.Converter.GetTransactionCategoryDataFromTransactionType(_transactionData.transactionType).sprite;
 
-        DateTime dataDate = Utilities.Converter.GetDateFromString(data.date);
+        DateTime dataDate = Utilities.Converter.GetDateFromString(_transactionData.date);
         GameManager.SelectedMonth = (Month)dataDate.Month - 1;
         GameManager.SelectedYear = dataDate.Year;
     }
@@ -52,11 +53,14 @@ public class TransactionOverviewUIManager : MonoBehaviour
 
     private void DeleteTransaction()
     {
-        
+        //Add popup to confirm deletion
+        Events.OnTransactionDeleted?.Invoke(_transactionData);
+        _transactionData = null;
+        ExitToDefaultScene();
     }
 
     private void ModifyTransaction()
     {
-
+        GameManager.Instance.LoadSceneAsync(SceneName.AddTransactionScene);
     }
 }

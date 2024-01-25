@@ -28,8 +28,11 @@ public class Events
     public static Action<TransactionData> OnTransactionCreated;
     public static Action<List<TransactionData>> OnTransactionsCreated;
 
+    public static Action<TransactionData> OnTransactionDeleted;
+    public static Action<TransactionData> OnTransactionUpdated;
+
 
 
     #endregion
-    
+
 }

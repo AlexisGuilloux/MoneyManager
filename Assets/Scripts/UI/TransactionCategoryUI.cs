@@ -10,13 +10,14 @@ public class TransactionCategoryUI : MonoBehaviour
 
     private TransactionCategoryData _data;
 
-    public void Init(TransactionCategoryData data)
+    public void Init(TransactionCategoryData data, bool isPressedByDefault = false)
     {
         _titleText.text = data.categoryName;
         _iconImage.sprite = data.sprite;
         _data = data;
 
         _toggle.onValueChanged.AddListener(delegate { OnTogglePressed(); });
+        _toggle.isOn = isPressedByDefault;
     }
 
     private void OnDestroy()

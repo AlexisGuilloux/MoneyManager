@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TransactionManager : MonoBehaviour
@@ -15,6 +14,8 @@ public class TransactionManager : MonoBehaviour
     {
         Events.OnTransactionCreated += OnTransactionCreated;
         Events.OnTransactionsCreated += OnTransactionCreated;
+        Events.OnTransactionDeleted += OnTransactionDeleted;
+        Events.OnTransactionUpdated += OnTransactionUpdated;
 
         LoadDatas();
     }
@@ -22,7 +23,9 @@ public class TransactionManager : MonoBehaviour
     private void OnDestroy()
     {
         Events.OnTransactionCreated -= OnTransactionCreated;
-        Events.OnTransactionsCreated += OnTransactionCreated;
+        Events.OnTransactionsCreated -= OnTransactionCreated;
+        Events.OnTransactionDeleted -= OnTransactionDeleted;
+        Events.OnTransactionUpdated -= OnTransactionUpdated;
     }
 
     #endregion
@@ -131,6 +134,32 @@ public class TransactionManager : MonoBehaviour
         }
 
         JsonManager.ExportJson(_transactionYears);
+    }
+
+    private void OnTransactionDeleted(TransactionData data)
+    {
+        if(GameManager.Instance.TransactionToDisplay == data)
+        {
+            GameManager.Instance.TransactionToDisplay = null;
+        }
+
+        for (int i = 0; i < _transactionDatas.Count; i++)
+        {
+            if (_transactionDatas[i] != data) continue;
+
+            _transactionDatas.RemoveAt(i);
+            break;
+        }
+    }
+
+    private void OnTransactionUpdated(TransactionData data)
+    {
+        for (int i = 0; i < _transactionDatas.Count; i++)
+        {
+            if (_transactionDatas[i] != data) continue;
+            _transactionDatas[i] = data;
+            break;
+        }
     }
 
     #endregion

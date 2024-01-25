@@ -10,10 +10,20 @@ public class TransactionCategoriesDisplayManager : MonoBehaviour
     [SerializeField] private Transform _contentTransform;
     [SerializeField] private Toggle _entryToggle;
 
+    private TransactionData _transactionData;
     // Start is called before the first frame update
-    void Start()
+    public void Init(TransactionData data)
     {
-        _entryToggle.isOn = false;
+        if (data != null)
+        {
+            _entryToggle.isOn = data.entry;
+            _transactionData = data;
+        }
+        else
+        {
+            _entryToggle.isOn = false;
+        }
+
         _entryToggle.onValueChanged.AddListener(delegate { UpdateListing(); });
         UpdateListing();
     }
@@ -35,7 +45,15 @@ public class TransactionCategoriesDisplayManager : MonoBehaviour
             if (_transactionCategoryDatas[i].entry != _entryToggle.isOn) continue;
 
             var newGO = Instantiate(_transactionCategoryPrefab, _contentTransform);
-            newGO.Init(_transactionCategoryDatas[i]);
+            
+            if(_transactionData != null && _transactionData.transactionType == _transactionCategoryDatas[i].transactionType)
+            {
+                newGO.Init(_transactionCategoryDatas[i], true);
+            }
+            else
+            {
+                newGO.Init(_transactionCategoryDatas[i]);
+            }
         }
     }
 }

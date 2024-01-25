@@ -501,6 +501,7 @@ MonoBehaviour:
   _equalBtn: {fileID: 1632237393810870361}
   _inputText: {fileID: 1453321850917244983}
   _resultText: {fileID: 5228604004747769709}
+  _equlBtnText: {fileID: 7385915432663281475}
 --- !u!1 &5014627106588282167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1624,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7385915432663281475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4873666376646852866, guid: a881a9b59f8228f44a4d8a333d25c308, type: 3}
+  m_PrefabInstance: {fileID: 2675902662523055681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &7385915433511148960 stripped

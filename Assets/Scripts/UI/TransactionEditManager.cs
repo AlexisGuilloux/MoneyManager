@@ -1,8 +1,9 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
-public class TransactionAdderManager : MonoBehaviour
+public class TransactionEditManager : MonoBehaviour
 {
     [SerializeField] private Button _previousBtn;
     [SerializeField] private Button _nextBtn;
@@ -10,18 +11,27 @@ public class TransactionAdderManager : MonoBehaviour
     [SerializeField] private GameObject[] _stepScreens;
     [SerializeField] private Button _exitBtn;
 
+    [Space]
+    [SerializeField] private TransactionCategoriesDisplayManager _categoriesDisplayManager;
+    [SerializeField] private TransactionAddTitleUIManager _addTitleUIManager;
+    [SerializeField] private TransactionAddDateUIManager _addDateUIManager;
+    [SerializeField] private CalculatorManager _calculatorManager;
+
     private string _transactionTitle;
     private TransactionCategoryData _transactionCategoryData;
     private float _transactionAmount = float.MinValue;
     private string _transactionDate;
-
-
     private int _stepIndex = 0;
     private string[] _stepTitles = new string[] {"Category", "Title", "Date", "Amount" };
+    private TransactionData _transactionData;
+
+    public static Action UserConfirmTransactionEvent;
 
     #region Mono
     private void Start()
     {
+        _transactionData = GameManager.Instance.TransactionToDisplay;
+
         //Set btns
         _previousBtn.onClick.AddListener(OnPreviousBtnPressed);
         _nextBtn.onClick.AddListener(OnNextBtnPressed);
@@ -33,6 +43,7 @@ public class TransactionAdderManager : MonoBehaviour
         Events.OnTransactionCategoryAdded += OnTransactionCategoryAdded;
         Events.OnTransactionAmountAdded += OnTransactionAmountAdded;
         Events.OnTransactionDateAdded += OnTransactionDateAdded;
+        UserConfirmTransactionEvent += UserConfirmTransaction;
 
 
         UpdateScreen();
@@ -48,6 +59,7 @@ public class TransactionAdderManager : MonoBehaviour
         Events.OnTransactionCategoryAdded -= OnTransactionCategoryAdded;
         Events.OnTransactionAmountAdded -= OnTransactionAmountAdded;
         Events.OnTransactionDateAdded -= OnTransactionDateAdded;
+        UserConfirmTransactionEvent -= UserConfirmTransaction;
     }
     #endregion
 
@@ -97,6 +109,11 @@ public class TransactionAdderManager : MonoBehaviour
 
     private void UpdateScreen()
     {
+        _categoriesDisplayManager.Init(_transactionData);
+        _addTitleUIManager.Init(_transactionData);
+        _addDateUIManager.Init(_transactionData);
+        _calculatorManager.Init(_transactionData);
+
 
         for (int i = 0; i < _stepScreens.Length; i++)
         {
@@ -117,6 +134,7 @@ public class TransactionAdderManager : MonoBehaviour
             return;
         }
         Events.OnTransactionReady?.Invoke(true);
+
     }
     private bool CheckScreenIndexLimits(bool increment)
     {
@@ -158,6 +176,32 @@ public class TransactionAdderManager : MonoBehaviour
     private void OnTransactionDateAdded(string date)
     {
         _transactionDate = date;
+    }
+
+    private void UserConfirmTransaction()
+    {
+        _transactionData = new TransactionData()
+        {
+            id = 0,
+            date = _transactionDate,
+            title = _transactionTitle,
+            amount = _transactionAmount,
+            transactionType = _transactionCategoryData.transactionType,
+            entry = _transactionCategoryData.entry
+        };
+
+        if (GameManager.Instance.TransactionToDisplay != null)
+        {
+            //Update data
+            Events.OnTransactionUpdated?.Invoke(_transactionData);
+        }
+        else
+        {
+            //Write new data
+            Events.OnTransactionCreated?.Invoke(_transactionData);
+        }
+
+        OnExitBtnPressed();
     }
 
     #endregion

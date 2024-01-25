@@ -43,6 +43,7 @@ public class CalculatorManager : MonoBehaviour
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI _inputText;
     [SerializeField] private TextMeshProUGUI _resultText;
+    [SerializeField] private TextMeshProUGUI _equlBtnText;
 
 
 
@@ -50,9 +51,11 @@ public class CalculatorManager : MonoBehaviour
     private float? _num01;
     private float? _num02;
     private CalculatorOperatorType _operatorType;
+    private bool _isTransactionReady = false;
+
 
     // Start is called before the first frame update
-    private void Start()
+    public void Init(TransactionData data)
     {
         //Button subscriptions
         _ceBtn.onClick.AddListener(OnCEBtnPressed);
@@ -84,7 +87,15 @@ public class CalculatorManager : MonoBehaviour
         Events.OnCalculatorTextChanged += OnCalculatorTextChanged;
         Events.OnTransactionReady += OnTransactionReady;
 
-        _resultText.text = "";
+        if(data != null)
+        {
+            _resultText.text = $"{data.amount} €";
+        }
+        else
+        {
+            _resultText.text = "";
+        }
+
         _inputText.text = "";
     }
 
@@ -260,9 +271,14 @@ public class CalculatorManager : MonoBehaviour
 
     private void OnEqualBtnPressed()
     {
+        if (_isTransactionReady)
+        {
+            TransactionEditManager.UserConfirmTransactionEvent?.Invoke();
+            return;
+        }
         Events.OnCalculatorTextChanged?.Invoke();
         ParseInputToFloat();
-        ProcessOperation();
+        ProcessOperation();        
     }
 
     #endregion
@@ -333,7 +349,7 @@ public class CalculatorManager : MonoBehaviour
                 OnCalculatorError();
                 break;
         }
-        _resultText.text = result.ToString(CultureInfo.InvariantCulture);
+        _resultText.text = result.ToString(CultureInfo.InvariantCulture) + " €";
         _num01 = null;
         _num02 = null;
 
@@ -342,13 +358,15 @@ public class CalculatorManager : MonoBehaviour
 
     private void OnTransactionReady(bool ready)
     {
+        _isTransactionReady = ready;
         if (ready)
         {
-            //var  =_equalBtn.GetComponent<Image>();
+            //btn to confirm and close AddTransaction screen
+            _equlBtnText.text = "OK";
         }
         else
         {
-
+            _equlBtnText.text = "=";
         }
     }
 
