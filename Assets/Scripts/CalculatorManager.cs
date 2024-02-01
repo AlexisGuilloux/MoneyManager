@@ -50,7 +50,7 @@ public class CalculatorManager : MonoBehaviour
     private string _inputString = "";
     private float? _num01;
     private float? _num02;
-    private CalculatorOperatorType _operatorType;
+    private CalculatorOperatorType _operatorType = CalculatorOperatorType.Null;
     private bool _isTransactionReady = false;
 
 
@@ -331,6 +331,7 @@ public class CalculatorManager : MonoBehaviour
     private void ProcessOperation()
     {
         float result = 0;
+
         switch (_operatorType)
         {
             case CalculatorOperatorType.Add:
@@ -345,10 +346,14 @@ public class CalculatorManager : MonoBehaviour
             case CalculatorOperatorType.Divide:
                 result = _num01.Value / _num02.Value;
                 break;
+            case CalculatorOperatorType.Null:
+                result = _num01.Value;
+                break;
             default:
                 OnCalculatorError();
                 break;
         }
+
         _resultText.text = result.ToString(CultureInfo.InvariantCulture) + " €";
         _num01 = null;
         _num02 = null;

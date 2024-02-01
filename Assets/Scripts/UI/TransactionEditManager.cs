@@ -45,6 +45,11 @@ public class TransactionEditManager : MonoBehaviour
         Events.OnTransactionDateAdded += OnTransactionDateAdded;
         UserConfirmTransactionEvent += UserConfirmTransaction;
 
+        //Init Screens
+        _categoriesDisplayManager.Init(_transactionData);
+        _addTitleUIManager.Init(_transactionData);
+        _addDateUIManager.Init(_transactionData);
+        _calculatorManager.Init(_transactionData);
 
         UpdateScreen();
     }
@@ -109,12 +114,6 @@ public class TransactionEditManager : MonoBehaviour
 
     private void UpdateScreen()
     {
-        _categoriesDisplayManager.Init(_transactionData);
-        _addTitleUIManager.Init(_transactionData);
-        _addDateUIManager.Init(_transactionData);
-        _calculatorManager.Init(_transactionData);
-
-
         for (int i = 0; i < _stepScreens.Length; i++)
         {
             _stepScreens[i].SetActive(false);
